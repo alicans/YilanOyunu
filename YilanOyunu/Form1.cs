@@ -81,7 +81,7 @@ namespace YilanOyunu
 
 
             // Oyun Bitti mi?
-            if (YilaninUzerindeMi(yeniBas))
+            if (YilaninUzerindeMi(yeniBas) || SahaDisindaMi(yeniBas))
             {
                 timer1.Stop();
                 MessageBox.Show("Oyun Bitti!");
@@ -104,6 +104,11 @@ namespace YilanOyunu
             {
                 yilan.RemoveAt(yilan.Count - 1);
             }
+        }
+
+        private bool SahaDisindaMi(Point bogum)
+        {
+            return bogum.X < 0 || bogum.Y < 0 || bogum.X >= boyut || bogum.Y >= boyut;
         }
 
         void BogumCiz(Graphics g, Point bogum, Color renk)
