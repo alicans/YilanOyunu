@@ -84,7 +84,7 @@ namespace YilanOyunu
             if (YilaninUzerindeMi(yeniBas) || SahaDisindaMi(yeniBas))
             {
                 timer1.Stop();
-                MessageBox.Show("Oyun Bitti!");
+                MessageBox.Show("Oyun Bitti! Puanýnýz: " + yemeAdet * 100);
                 return;
             }
 
@@ -99,6 +99,7 @@ namespace YilanOyunu
             {
                 yemeAdet++;
                 YemOlustur();
+                lblPuan.Text = "Puan: " + (yemeAdet * 100);
             }
             else
             {

@@ -31,12 +31,13 @@
             components = new System.ComponentModel.Container();
             pnlSaha = new Panel();
             timer1 = new System.Windows.Forms.Timer(components);
+            lblPuan = new Label();
             SuspendLayout();
             // 
             // pnlSaha
             // 
             pnlSaha.BackColor = Color.LimeGreen;
-            pnlSaha.Location = new Point(12, 12);
+            pnlSaha.Location = new Point(12, 34);
             pnlSaha.Name = "pnlSaha";
             pnlSaha.Size = new Size(450, 450);
             pnlSaha.TabIndex = 0;
@@ -48,20 +49,33 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
+            // lblPuan
+            // 
+            lblPuan.AutoSize = true;
+            lblPuan.Font = new Font("Trebuchet MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPuan.Location = new Point(187, 7);
+            lblPuan.Name = "lblPuan";
+            lblPuan.Size = new Size(77, 24);
+            lblPuan.TabIndex = 1;
+            lblPuan.Text = "Puan: 0";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(470, 469);
+            ClientSize = new Size(471, 495);
+            Controls.Add(lblPuan);
             Controls.Add(pnlSaha);
             Name = "Form1";
             Text = "Yılan Oyunu";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Panel pnlSaha;
         private System.Windows.Forms.Timer timer1;
+        private Label lblPuan;
     }
 }
