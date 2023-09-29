@@ -89,7 +89,7 @@ namespace YilanOyunu
 
 
             // Oyun Bitti mi?
-            if (YilaninUzerindeMi(yeniBas) || SahaDisindaMi(yeniBas))
+            if (YilaninKuyruguHaricUzerindeMi(yeniBas) || SahaDisindaMi(yeniBas))
             {
                 timer1.Stop();
                 MessageBox.Show("Oyun Bitti! Puanýnýz: " + yemeAdet * 100);
@@ -165,5 +165,7 @@ namespace YilanOyunu
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        
     }
 }
