@@ -51,13 +51,13 @@
             // 
             // lblPuan
             // 
-            lblPuan.AutoSize = true;
-            lblPuan.Font = new Font("Trebuchet MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPuan.Location = new Point(187, 7);
+            lblPuan.Font = new Font("Consolas", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPuan.Location = new Point(12, 4);
             lblPuan.Name = "lblPuan";
-            lblPuan.Size = new Size(77, 24);
+            lblPuan.Size = new Size(450, 24);
             lblPuan.TabIndex = 1;
-            lblPuan.Text = "Puan: 0";
+            lblPuan.Text = "Puan: 00000";
+            lblPuan.TextAlign = ContentAlignment.TopCenter;
             // 
             // Form1
             // 
@@ -69,7 +69,6 @@
             Name = "Form1";
             Text = "Yılan Oyunu";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

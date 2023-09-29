@@ -99,7 +99,8 @@ namespace YilanOyunu
             {
                 yemeAdet++;
                 YemOlustur();
-                lblPuan.Text = "Puan: " + (yemeAdet * 100);
+                lblPuan.Text = $"Puan: {yemeAdet * 100:00000}";
+                timer1.Interval = (int)(timer1.Interval * 0.95);
             }
             else
             {
