@@ -9,6 +9,7 @@ namespace YilanOyunu
         int boyut = 9;
         int xYon = 1, yYon = 0;
         int yemeAdet = 0;
+        bool yonBelirlendi = false;
 
         public Form1()
         {
@@ -69,9 +70,8 @@ namespace YilanOyunu
         private void timer1_Tick(object sender, EventArgs e)
         {
             HareketEt();
-
-
             pnlSaha.Refresh();
+            yonBelirlendi = false;
         }
 
         private void HareketEt()
@@ -126,29 +126,34 @@ namespace YilanOyunu
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
+            if(yonBelirlendi)
+                return base.ProcessCmdKey(ref msg, keyData);
+
+            timer1.Interval = 200;
+            Point yeniYon = Point.Empty;
             switch (keyData)
             {
                 case Keys.Up:
-                    xYon = 0; yYon = -1;
-                    timer1.Interval = 200;
+                    yeniYon = new Point(0, -1);
                     break;
                 case Keys.Right:
-                    xYon = 1; yYon = 0;
-                    timer1.Interval = 200;
+                    yeniYon = new Point(1, 0);
                     break;
                 case Keys.Down:
-                    xYon = 0; yYon = 1;
-                    timer1.Interval = 200;
+                    yeniYon = new Point(0, 1);
                     break;
                 case Keys.Left:
-                    xYon = -1; yYon = 0;
-                    timer1.Interval = 200;
+                    yeniYon = new Point(-1, 0);
                     break;
-
-
-
             }
 
+            if (yeniYon == Point.Empty || xYon == 0 && yeniYon.X == 0 || yYon == 0 && yeniYon.Y == 0)
+                return base.ProcessCmdKey(ref msg, keyData);
+
+            xYon = yeniYon.X;
+            yYon = yeniYon.Y;
+
+            yonBelirlendi = true;
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
