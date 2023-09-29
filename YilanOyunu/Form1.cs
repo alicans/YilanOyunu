@@ -12,8 +12,12 @@ namespace YilanOyunu
 
         private void pnlSaha_Paint(object sender, PaintEventArgs e)
         {
+            Point birNokta = new Point(3,4);
+            BogumCiz(e.Graphics, birNokta, Color.Orange);
 
-            e.Graphics.FillRectangle(Brushes.MidnightBlue, rnd.Next(300), rnd.Next(300), 40, 40);
+            Point baskaNokta = new Point(6,7);
+            BogumCiz(e.Graphics, baskaNokta, Color.Orange);
+            //e.Graphics.FillRectangle(Brushes.MidnightBlue, rnd.Next(300), rnd.Next(300), 40, 40);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -21,10 +25,15 @@ namespace YilanOyunu
             pnlSaha.Refresh();
         }
 
-        void BogumCiz(Point bogum)
+        void BogumCiz(Graphics g, Point bogum, Color renk)
         {
+            Brush firca = new SolidBrush(renk);
             int gen = pnlSaha.Width / boyut;
-            int yuh = pnlSaha.Height / boyut;
+            int yuk = pnlSaha.Height / boyut;
+            int x = bogum.X * gen;
+            int y = bogum.Y * yuk;
+            g.FillRectangle(firca,x,y,gen,yuk);
+
         }
     }
 }
