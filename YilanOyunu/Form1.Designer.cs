@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pnlSaha = new Panel();
+            timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // pnlSaha
@@ -38,6 +40,13 @@
             pnlSaha.Name = "pnlSaha";
             pnlSaha.Size = new Size(500, 500);
             pnlSaha.TabIndex = 0;
+            pnlSaha.Paint += pnlSaha_Paint;
+            // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 500;
+            timer1.Tick += timer1_Tick;
             // 
             // Form1
             // 
@@ -46,12 +55,13 @@
             ClientSize = new Size(527, 524);
             Controls.Add(pnlSaha);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Yılan Oyunu";
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel pnlSaha;
+        private System.Windows.Forms.Timer timer1;
     }
 }
