@@ -24,11 +24,11 @@ namespace YilanOyunu
             {
                 yeniYem = new Point(rnd.Next(boyut), rnd.Next(boyut));
             }
-            while (YemUzerindeMi(yeniYem));
+            while (YilaninUzerindeMi(yeniYem));
             yem = yeniYem;
         }
 
-        private bool YemUzerindeMi(Point yeniYem)
+        private bool YilaninUzerindeMi(Point yeniYem)
         {
             foreach (Point bogum in yilan)
                 if (bogum == yeniYem)
@@ -78,12 +78,26 @@ namespace YilanOyunu
         {
             Point mevcutBas = yilan[0];
             Point yeniBas = new Point(mevcutBas.X + xYon, mevcutBas.Y + yYon);
+
+
+            // Oyun Bitti mi?
+            if (YilaninUzerindeMi(yeniBas))
+            {
+                timer1.Stop();
+                MessageBox.Show("Oyun Bitti!");
+                return;
+            }
+
+
+
+
             bool yemiYuttuMu = yeniBas == yem;
             yilan.Insert(0, yeniBas);
 
 
             if (yemiYuttuMu)
             {
+                yemeAdet++;
                 YemOlustur();
             }
             else
