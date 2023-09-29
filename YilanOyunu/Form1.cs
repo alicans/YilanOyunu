@@ -6,7 +6,7 @@ namespace YilanOyunu
         List<Point> yilan;
         Random rnd = new Random();
         int boyut = 9;
-        int xYon = +1;
+        int xYon = 1;
         int yYon = 0;
 
         public Form1()
@@ -64,6 +64,31 @@ namespace YilanOyunu
             int y = bogum.Y * yuk;
             g.FillRectangle(firca, x, y, gen, yuk);
 
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Up:
+                    xYon = 0; yYon = -1;
+                    break;
+                case Keys.Right:
+                    xYon = 1; yYon = 0;
+                    break;
+                case Keys.Down:
+                    xYon = 0; yYon = 1;
+                    break;
+                case Keys.Left:
+                    xYon = -1; yYon = 0;
+                    break;
+
+               
+
+            }
+
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
