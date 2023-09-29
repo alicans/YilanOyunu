@@ -35,24 +35,24 @@
             // 
             // pnlSaha
             // 
-            pnlSaha.BackColor = SystemColors.ActiveCaption;
+            pnlSaha.BackColor = Color.LimeGreen;
             pnlSaha.Location = new Point(12, 12);
             pnlSaha.Name = "pnlSaha";
-            pnlSaha.Size = new Size(500, 500);
+            pnlSaha.Size = new Size(450, 450);
             pnlSaha.TabIndex = 0;
             pnlSaha.Paint += pnlSaha_Paint;
             // 
             // timer1
             // 
             timer1.Enabled = true;
-            timer1.Interval = 500;
+            timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(527, 524);
+            ClientSize = new Size(470, 469);
             Controls.Add(pnlSaha);
             Name = "Form1";
             Text = "Yılan Oyunu";
