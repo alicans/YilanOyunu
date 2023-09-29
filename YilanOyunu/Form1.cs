@@ -3,16 +3,37 @@ namespace YilanOyunu
 
     public partial class Form1 : Form
     {
-        List<Point> yilan;
         Random rnd = new Random();
+        List<Point> yilan;
+        Point yem;
         int boyut = 9;
-        int xYon = 1;
-        int yYon = 0;
+        int xYon = 1, yYon = 0;
+        int yemeAdet = 0;
 
         public Form1()
         {
             InitializeComponent();
             YilaniOlustur();
+            YemOlustur();
+        }
+
+        private void YemOlustur()
+        {
+            Point yeniYem;
+            do
+            {
+                yeniYem = new Point(rnd.Next(boyut), rnd.Next(boyut));
+            }
+            while (YemUzerindeMi(yeniYem));
+            yem = yeniYem;
+        }
+
+        private bool YemUzerindeMi(Point yeniYem)
+        {
+            foreach (Point bogum in yilan)
+                if (bogum == yeniYem)
+                    return true;
+            return false;
         }
 
         private void YilaniOlustur()
@@ -28,6 +49,12 @@ namespace YilanOyunu
         private void pnlSaha_Paint(object sender, PaintEventArgs e)
         {
             YilaniBoya(e.Graphics);
+            YemiBoya(e.Graphics);
+        }
+
+        private void YemiBoya(Graphics graphics)
+        {
+            BogumCiz(graphics, yem, Color.Gold);
         }
 
         private void YilaniBoya(Graphics graphics)
@@ -51,8 +78,18 @@ namespace YilanOyunu
         {
             Point mevcutBas = yilan[0];
             Point yeniBas = new Point(mevcutBas.X + xYon, mevcutBas.Y + yYon);
+            bool yemiYuttuMu = yeniBas == yem;
             yilan.Insert(0, yeniBas);
-            yilan.RemoveAt(yilan.Count - 1);
+
+
+            if (yemiYuttuMu)
+            {
+                YemOlustur();
+            }
+            else
+            {
+                yilan.RemoveAt(yilan.Count - 1);
+            }
         }
 
         void BogumCiz(Graphics g, Point bogum, Color renk)
@@ -72,18 +109,22 @@ namespace YilanOyunu
             {
                 case Keys.Up:
                     xYon = 0; yYon = -1;
+                    timer1.Interval = 200;
                     break;
                 case Keys.Right:
                     xYon = 1; yYon = 0;
+                    timer1.Interval = 200;
                     break;
                 case Keys.Down:
                     xYon = 0; yYon = 1;
+                    timer1.Interval = 200;
                     break;
                 case Keys.Left:
                     xYon = -1; yYon = 0;
+                    timer1.Interval = 200;
                     break;
 
-               
+
 
             }
 
