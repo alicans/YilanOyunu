@@ -1,6 +1,5 @@
 namespace YilanOyunu
 {
-
     public partial class Form1 : Form
     {
         Random rnd = new Random();
@@ -29,12 +28,21 @@ namespace YilanOyunu
             yem = yeniYem;
         }
 
-        private bool YilaninUzerindeMi(Point yeniYem)
+        private bool YilaninUzerindeMi(Point hedef)
         {
             foreach (Point bogum in yilan)
-                if (bogum == yeniYem)
+                if (bogum == hedef)
                     return true;
             return false;
+        }
+
+        private bool YilaninKuyruguHaricUzerindeMi(Point hedef)
+        {
+            //kuyruðuna gelirse sýkýntý yok
+            if (hedef == yilan[yilan.Count - 1])
+                return false;
+
+            return YilaninUzerindeMi(hedef);
         }
 
         private void YilaniOlustur()
@@ -126,7 +134,7 @@ namespace YilanOyunu
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if(yonBelirlendi)
+            if (yonBelirlendi)
                 return base.ProcessCmdKey(ref msg, keyData);
 
             timer1.Interval = 200;
