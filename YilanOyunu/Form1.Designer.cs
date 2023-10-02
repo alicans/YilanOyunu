@@ -32,6 +32,7 @@
             pnlSaha = new Panel();
             timer1 = new System.Windows.Forms.Timer(components);
             lblPuan = new Label();
+            btnYeniOyun = new Button();
             SuspendLayout();
             // 
             // pnlSaha
@@ -45,7 +46,6 @@
             // 
             // timer1
             // 
-            timer1.Enabled = true;
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
@@ -59,11 +59,22 @@
             lblPuan.Text = "Puan: 00000";
             lblPuan.TextAlign = ContentAlignment.TopCenter;
             // 
+            // btnYeniOyun
+            // 
+            btnYeniOyun.Location = new Point(12, 7);
+            btnYeniOyun.Name = "btnYeniOyun";
+            btnYeniOyun.Size = new Size(99, 23);
+            btnYeniOyun.TabIndex = 2;
+            btnYeniOyun.Text = "Yeni Oyun";
+            btnYeniOyun.UseVisualStyleBackColor = true;
+            btnYeniOyun.Click += btnYeniOyun_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(471, 495);
+            Controls.Add(btnYeniOyun);
             Controls.Add(lblPuan);
             Controls.Add(pnlSaha);
             Name = "Form1";
@@ -76,5 +87,6 @@
         private Panel pnlSaha;
         private System.Windows.Forms.Timer timer1;
         private Label lblPuan;
+        private Button btnYeniOyun;
     }
 }

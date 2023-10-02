@@ -142,15 +142,19 @@ namespace YilanOyunu
             switch (keyData)
             {
                 case Keys.Up:
+                    if (timer1.Enabled == false) timer1.Start();
                     yeniYon = new Point(0, -1);
                     break;
                 case Keys.Right:
+                    if (timer1.Enabled == false) timer1.Start();
                     yeniYon = new Point(1, 0);
                     break;
                 case Keys.Down:
+                    if (timer1.Enabled == false) timer1.Start();
                     yeniYon = new Point(0, 1);
                     break;
                 case Keys.Left:
+                    if (timer1.Enabled == false) timer1.Start();
                     yeniYon = new Point(-1, 0);
                     break;
             }
@@ -166,6 +170,18 @@ namespace YilanOyunu
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        
+        private void btnYeniOyun_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            yemeAdet = 0;
+            yilan.Clear();
+            xYon = 1; yYon = 0;
+            lblPuan.Text = "Puan: 00000";
+
+            YemOlustur();
+            YilaniOlustur();
+            
+            pnlSaha.Refresh();
+        }
     }
 }
