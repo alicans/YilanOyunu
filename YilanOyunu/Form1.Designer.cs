@@ -33,6 +33,7 @@
             timer1 = new System.Windows.Forms.Timer(components);
             lblPuan = new Label();
             btnYeniOyun = new Button();
+            lblEnYuksek = new Label();
             SuspendLayout();
             // 
             // pnlSaha
@@ -52,9 +53,9 @@
             // lblPuan
             // 
             lblPuan.Font = new Font("Consolas", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPuan.Location = new Point(12, 4);
+            lblPuan.Location = new Point(8, 3);
             lblPuan.Name = "lblPuan";
-            lblPuan.Size = new Size(450, 24);
+            lblPuan.Size = new Size(369, 24);
             lblPuan.TabIndex = 1;
             lblPuan.Text = "Puan: 00000";
             lblPuan.TextAlign = ContentAlignment.TopCenter;
@@ -69,17 +70,29 @@
             btnYeniOyun.UseVisualStyleBackColor = true;
             btnYeniOyun.Click += btnYeniOyun_Click;
             // 
+            // lblEnYuksek
+            // 
+            lblEnYuksek.AutoSize = true;
+            lblEnYuksek.Font = new Font("Consolas", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblEnYuksek.Location = new Point(272, 2);
+            lblEnYuksek.Name = "lblEnYuksek";
+            lblEnYuksek.Size = new Size(194, 28);
+            lblEnYuksek.TabIndex = 3;
+            lblEnYuksek.Text = "EnYük. : 00000";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(471, 495);
+            Controls.Add(lblEnYuksek);
             Controls.Add(btnYeniOyun);
             Controls.Add(lblPuan);
             Controls.Add(pnlSaha);
             Name = "Form1";
             Text = "Yılan Oyunu";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -88,5 +101,6 @@
         private System.Windows.Forms.Timer timer1;
         private Label lblPuan;
         private Button btnYeniOyun;
+        private Label lblEnYuksek;
     }
 }

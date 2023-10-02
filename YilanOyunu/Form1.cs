@@ -8,6 +8,7 @@ namespace YilanOyunu
         int boyut = 9;
         int xYon = 1, yYon = 0;
         int yemeAdet = 0;
+        int enYuksekPuan = 0;
         bool yonBelirlendi = false;
 
         public Form1()
@@ -92,7 +93,11 @@ namespace YilanOyunu
             if (YilaninKuyruguHaricUzerindeMi(yeniBas) || SahaDisindaMi(yeniBas))
             {
                 timer1.Stop();
-                MessageBox.Show("Oyun Bitti! Puanýnýz: " + yemeAdet * 100);
+                if (yemeAdet > enYuksekPuan) {
+                    enYuksekPuan = yemeAdet;
+                    MessageBox.Show("Oyun Bitti! \nPuanýnýz: " + yemeAdet * 100 + "\nEn yüksek puan. Tebrikler.");
+                } 
+                else MessageBox.Show("Oyun Bitti! Puanýnýz: " + yemeAdet * 100);
                 return;
             }
 
@@ -108,6 +113,7 @@ namespace YilanOyunu
                 yemeAdet++;
                 YemOlustur();
                 lblPuan.Text = $"Puan: {yemeAdet * 100:00000}";
+                lblEnYuksek.Text = $"EnYük. : {enYuksekPuan * 100:00000}";
                 timer1.Interval = (int)(timer1.Interval * 0.95);
             }
             else
@@ -180,7 +186,7 @@ namespace YilanOyunu
 
             YemOlustur();
             YilaniOlustur();
-            
+
             pnlSaha.Refresh();
         }
     }
