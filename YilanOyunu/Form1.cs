@@ -10,6 +10,7 @@ namespace YilanOyunu
         int yemeAdet = 0;
         int enYuksekPuan = 0;
         bool yonBelirlendi = false;
+        bool olduMu = false;
 
         public Form1()
         {
@@ -92,12 +93,14 @@ namespace YilanOyunu
             // Oyun Bitti mi?
             if (YilaninKuyruguHaricUzerindeMi(yeniBas) || SahaDisindaMi(yeniBas))
             {
+                olduMu = true;
                 timer1.Stop();
-                if (yemeAdet > enYuksekPuan) {
+                if (yemeAdet > enYuksekPuan)
+                {
                     enYuksekPuan = yemeAdet;
-                    MessageBox.Show("Oyun Bitti! \nPuanýnýz: " + yemeAdet * 100 + "\nEn yüksek puan. Tebrikler.");
-                } 
-                else MessageBox.Show("Oyun Bitti! Puanýnýz: " + yemeAdet * 100);
+                    MessageBox.Show("Oyun Bitti! \nPuanýnýz: " + yemeAdet * 100 + "\nEn yüksek puan. Tebrikler.","Yeni Rekor!");
+                }
+                else MessageBox.Show("Oyun Bitti!\nPuanýnýz: " + yemeAdet * 100,"Baþka sefere..");
                 return;
             }
 
@@ -148,19 +151,19 @@ namespace YilanOyunu
             switch (keyData)
             {
                 case Keys.Up:
-                    if (timer1.Enabled == false) timer1.Start();
+                    if (timer1.Enabled == false && olduMu == false) timer1.Start();
                     yeniYon = new Point(0, -1);
                     break;
                 case Keys.Right:
-                    if (timer1.Enabled == false) timer1.Start();
+                    if (timer1.Enabled == false && olduMu == false) timer1.Start();
                     yeniYon = new Point(1, 0);
                     break;
                 case Keys.Down:
-                    if (timer1.Enabled == false) timer1.Start();
+                    if (timer1.Enabled == false && olduMu == false) timer1.Start();
                     yeniYon = new Point(0, 1);
                     break;
                 case Keys.Left:
-                    if (timer1.Enabled == false) timer1.Start();
+                    if (timer1.Enabled == false && olduMu == false) timer1.Start();
                     yeniYon = new Point(-1, 0);
                     break;
             }
@@ -179,15 +182,20 @@ namespace YilanOyunu
         private void btnYeniOyun_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            yemeAdet = 0;
             yilan.Clear();
+
+            yemeAdet = 0;
             xYon = 1; yYon = 0;
             lblPuan.Text = "Puan: 00000";
 
             YemOlustur();
             YilaniOlustur();
 
+
+            olduMu = false;
+            lblEnYuksek.Text = $"EnYük. : {enYuksekPuan * 100:00000}";
             pnlSaha.Refresh();
+            
         }
     }
 }
